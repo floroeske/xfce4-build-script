@@ -12,13 +12,8 @@ while IFS= read -r LINE; do
     fi
 done < modules.txt
 
-PREFIX=/usr/local
-export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH"
-export CFLAGS="-O2 -pipe"
 DIR=$HOME/xfce4-build/src
 pushd $DIR
-
-# cmake -DCMAKE_INSTALL_PREFIX=/usr
 
 for MODULE in ${MODULES};
 do
@@ -36,7 +31,7 @@ do
     echo BUILDSYSTEM $BUILDSYSTEM
 
     pushd ${REPO}
-    make -j `nproc`
+    make clean
     popd
 done
 

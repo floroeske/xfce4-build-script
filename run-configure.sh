@@ -18,8 +18,6 @@ export CFLAGS="-O2 -pipe"
 DIR=$HOME/xfce4-build/src
 pushd $DIR
 
-# cmake -DCMAKE_INSTALL_PREFIX=/usr
-
 for MODULE in ${MODULES};
 do
     IFS=';';
@@ -35,9 +33,22 @@ do
     echo REPO $REPO
     echo BUILDSYSTEM $BUILDSYSTEM
 
-    pushd ${REPO}
-    make -j `nproc`
-    popd
+    if [[ "$BUILDSYSTEM" == "make" ]]
+    then
+        pushd ${REPO}
+        if [ ! -f "configure" ]; then
+            echo running autogen.sh
+            sh autogen.sh  # &> /dev/null
+        fi
+        echo running configure
+        ./configure --prefix=${PREFIX} --enable-maintainer-mode  # &> /dev/null
+        popd
+    elif [[ "$BUILDSYSTEM" == "cmake" ]]
+    then
+        pushd ${REPO}
+        cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} .
+        popd
+    fi
 done
 
 echo

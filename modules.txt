@@ -1,0 +1,86 @@
+# group;project;buildsystem
+
+xfce;xfce4-dev-tools;make
+xfce;libxfce4util;make
+xfce;xfconf;make
+xfce;libxfce4ui;make
+xfce;garcon;make
+xfce;exo;make
+xfce;thunar;make
+xfce;xfce4-panel;make
+xfce;xfce4-settings;make
+xfce;xfce4-session;make
+xfce;xfdesktop;make
+xfce;xfwm4;make
+xfce;xfce4-appfinder;make
+xfce;tumbler;make
+xfce;thunar-volman;make
+xfce;xfce4-power-manager;make
+apps;gigolo;make
+
+# apps;xfce4-mixer;make
+#
+# not sure why this one doesn't work
+
+apps;xfce4-notifyd;make
+apps;xfce4-screensaver;make
+apps;xfce4-screenshooter;make
+apps;xfce4-taskmanager;make
+apps;xfce4-terminal;make
+apps;xfce4-volumed-pulse;make
+panel-plugins;xfce4-battery-plugin;make
+panel-plugins;xfce4-calculator-plugin;make
+panel-plugins;xfce4-clipman-plugin;make
+panel-plugins;xfce4-cpufreq-plugin;make
+panel-plugins;xfce4-cpugraph-plugin;make
+panel-plugins;xfce4-datetime-plugin;make
+panel-plugins;xfce4-diskperf-plugin;make
+panel-plugins;xfce4-docklike-plugin;make
+
+# panel-plugins;xfce4-embed-plugin;make
+#
+# needs gtk2
+
+panel-plugins;xfce4-eyes-plugin;make
+panel-plugins;xfce4-fsguard-plugin;make
+panel-plugins;xfce4-generic-slider;make
+panel-plugins;xfce4-genmon-plugin;make
+panel-plugins;xfce4-indicator-plugin;make
+panel-plugins;xfce4-mailwatch-plugin;make
+panel-plugins;xfce4-mount-plugin;make
+panel-plugins;xfce4-mpc-plugin;make
+panel-plugins;xfce4-netload-plugin;make
+
+# panel-plugins;xfce4-notes-plugin;make
+#
+# needs valac
+
+panel-plugins;xfce4-places-plugin;make
+panel-plugins;xfce4-pulseaudio-plugin;make
+panel-plugins;xfce4-sample-plugin;make
+panel-plugins;xfce4-sensors-plugin;make
+panel-plugins;xfce4-smartbookmark-plugin;make
+panel-plugins;xfce4-statusnotifier-plugin;make
+panel-plugins;xfce4-stopwatch-plugin;make
+panel-plugins;xfce4-systemload-plugin;make
+panel-plugins;xfce4-time-out-plugin;make
+panel-plugins;xfce4-timer-plugin;make
+panel-plugins;xfce4-verve-plugin;make
+panel-plugins;xfce4-wavelan-plugin;make
+panel-plugins;xfce4-weather-plugin;make
+panel-plugins;xfce4-whiskermenu-plugin;cmake
+
+# panel-plugins;xfce4-windowck-plugin;make
+#
+# /home/flo/xfce4-build/src/xfce4-windowck-plugin/install-sh: ./themerc does not exist.
+# make[4]: *** [Makefile:517: install-data-local] Error 1
+# make[4]: Leaving directory '/home/flo/xfce4-build/src/xfce4-windowck-plugin/themes/windowck/xfwm4'
+# make[3]: *** [Makefile:402: install-am] Error 2
+# make[3]: Leaving directory '/home/flo/xfce4-build/src/xfce4-windowck-plugin/themes/windowck/xfwm4'
+# make[2]: *** [Makefile:419: install-recursive] Error 1
+# make[2]: Leaving directory '/home/flo/xfce4-build/src/xfce4-windowck-plugin/themes/windowck'
+# make[1]: *** [Makefile:419: install-recursive] Error 1
+# make[1]: Leaving directory '/home/flo/xfce4-build/src/xfce4-windowck-plugin/themes'
+# make: *** [Makefile:480: install-recursive] Error 1
+
+panel-plugins;xfce4-xkb-plugin;make
