@@ -1,21 +1,6 @@
 #!/bin/bash
 
-set -e
-
-MODULES=""
-while IFS= read -r LINE; do
-    if [[ $LINE =~ ^#.* ]]
-    then
-        echo Skipping $LINE
-    else
-        MODULES+=" $LINE"
-    fi
-done < modules.txt
-
-DIR=$HOME/xfce4-build/src
-mkdir -p $DIR
-pushd $DIR
-
+source env.sh
 
 for MODULE in ${MODULES};
 do

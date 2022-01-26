@@ -1,24 +1,6 @@
 #!/bin/bash
 
-set -e
-
-MODULES=""
-while IFS= read -r LINE; do
-    if [[ $LINE =~ ^#.* ]]
-    then
-        echo Skipping $LINE
-    else
-        MODULES+=" $LINE"
-    fi
-done < modules.txt
-
-PREFIX=/usr/local
-export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH"
-export CFLAGS="-O2 -pipe"
-DIR=$HOME/xfce4-build/src
-pushd $DIR
-
-# cmake -DCMAKE_INSTALL_PREFIX=/usr
+source env.sh
 
 for MODULE in ${MODULES};
 do
@@ -35,10 +17,25 @@ do
     echo REPO $REPO
     echo BUILDSYSTEM $BUILDSYSTEM
 
+    if [[ "$BUILDSYSTEM" == "make" ]]
+    then
+        pushd ${REPO}
+        if [ ! -f "configure" ]; then
+            echo running autogen.sh
+            sh autogen.sh  # &> /dev/null
+        fi
+        echo running configure
+        ./configure --prefix=${PREFIX} --enable-maintainer-mode  # &> /dev/null
+        popd
+    elif [[ "$BUILDSYSTEM" == "cmake" ]]
+    then
+        pushd ${REPO}
+        cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} .
+        popd
+    fi
+
     pushd ${REPO}
     make -j `nproc`
+    sudo make install
     popd
 done
-
-echo
-echo "Success"

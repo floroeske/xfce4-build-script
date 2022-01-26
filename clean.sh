@@ -1,20 +1,6 @@
 #!/bin/bash
 
-set -e
-
-MODULES=""
-while IFS= read -r LINE; do
-    if [[ $LINE =~ ^#.* ]]
-    then
-        echo Skipping $LINE
-    else
-        MODULES+=" $LINE"
-    fi
-done < modules.txt
-
-DIR=$HOME/xfce4-build/src
-pushd $DIR
-
+source env.sh
 for MODULE in ${MODULES};
 do
     IFS=';';
@@ -34,6 +20,3 @@ do
     make clean
     popd
 done
-
-echo
-echo "Success"
